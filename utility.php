@@ -43,3 +43,36 @@ if ( ! function_exists('convert_number_to_words'))
         return $numberInWord;
     }  
 }
+
+/***
+ * Convert CSV File Data into Associative Array
+ * 
+ * $filename    String     Absolute path of file
+ * $delimiter   Character  Separator between two or more Data
+ * 
+ * $data        Array      Return an Associative Array
+ */ 
+if ( !function_exists('csv_to_array')) 
+{
+    function csv_to_array($filename = '', $delimiter = ',')
+    {
+        if (!file_exists($filename) || !is_readable($filename))
+            return false;
+
+        $header = null;
+        $data = array();
+        if (($handle = fopen($filename, 'r')) !== false)
+        {
+            while (($row = fgetcsv($handle, 1000, $delimiter)) !== false)
+            {
+                if (!$header)
+                    $header = $row;
+                else
+                    $data[] = array_combine($header, $row);
+            }
+            fclose($handle);
+        }
+
+        return $data;
+    }
+}
