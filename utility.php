@@ -106,7 +106,7 @@ if (!function_exists('csv_to_array'))
 /***
  * Send Firebase Notification
  *
- * $token          String        Absolute path of file
+ * $token          String        Device Token 
  * $notification   Object        Notification object
  * $server_key     String        Server Key
  *
@@ -177,3 +177,20 @@ if (!function_exists('send_firebase_notification'))
     }
 }
 
+/***
+ * Get Value from Array
+ * $params      Array       get value from Array
+ * $key         String      get value using key
+ * $default     String      if key not exist then return default
+ * 
+ * $value       Any         Return a Value from Array
+ */
+
+if(!function_exists('getValue')) 
+{
+    function getValue($params, $key, $default = null)
+    {
+        $value = (isset($params[$key]) && $params[$key]) ? $params[$key] : $default;
+        return $value;
+    }
+}
