@@ -186,11 +186,30 @@ if (!function_exists('send_firebase_notification'))
  * $value       Any         Return a Value from Array
  */
 
-if(!function_exists('getValue')) 
+if(!function_exists('get_value')) 
 {
-    function getValue($params, $key, $default = null)
+    function get_value($params, $key, $default = null)
     {
         $value = (isset($params[$key]) && $params[$key]) ? $params[$key] : $default;
         return $value;
+    }
+}
+/***
+ * Return encrypted string from plain string
+ * $string              String       Plain Text to be encrypt
+ * $encryption_algo     String       Assign encryption algorithm
+ * $encryption_iv       String       Non NULL initialization vector
+ * $encryption_key      String       used to encrypt string
+ * $options             Integer      Bitwise flags OPENSSL_RAW_DATA and OPENSSL_ZERO_PADDIN. By default, it set 0
+ * 
+ * $encrypted_string    String       Return a encrypted string
+ */
+
+if(!function_exists('encrypt_string')) 
+{
+    function encrypt_string($string, $encryption_algo, $encryption_iv, $encryption_key, $options = 0)
+    {
+        $encrypted_string =  openssl_encrypt($string, $encryption_algo, $encryption_key, $options, $encryption_iv);
+        return $encrypted_string;
     }
 }
