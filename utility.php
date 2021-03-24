@@ -213,3 +213,22 @@ if(!function_exists('encrypt_string'))
         return $encrypted_string;
     }
 }
+/***
+ * Return Plain string from Encrypted string
+ * $encryptString       String       encrypted string 
+ * $decryption_algo     String       Assign decryption algorithm same as encryption algorithm 
+ * $decryption_iv       String       Non NULL initialization vector
+ * $decryption_key      String       used to decrypt string
+ * $options             Integer      Bitwise flags OPENSSL_RAW_DATA and OPENSSL_ZERO_PADDIN. By default, it set 0
+ * 
+ * $decrypted_string    String       Return a decrypted string
+ */
+
+if(!function_exists('decrypt_string')) 
+{
+    function decrypt_string($encryptString, $decryption_algo, $decryption_iv, $decryption_key, $options = 0)
+    {
+        $decrypted_string =  openssl_decrypt($encryptString, $decryption_algo, $decryption_key, $options, $decryption_iv);
+        return $decrypted_string;
+    }
+}
