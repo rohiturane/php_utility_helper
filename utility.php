@@ -232,3 +232,19 @@ if(!function_exists('decrypt_string'))
         return $decrypted_string;
     }
 }
+/***
+ * Return Boolean Value 
+ * 
+ * $value           Any         Check if it is empty
+ * 
+ * $check_empty     Boolean     Return true or false value
+ */
+
+if(!function_exists('check_empty'))
+{
+    function check_empty($value)
+    {
+        $check_empty = empty($value) ? true : false; 
+        return $check_empty;
+    }
+}
