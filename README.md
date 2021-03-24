@@ -7,3 +7,4 @@
 | 3      | `send_firebase_notification` | Send Firebase Notification                   |
 | 4      | `get_value`                  | Get Value from Array                         |
 | 5      | `encrypt_string`             | Return encrypted string from plain string    |
+| 6      | `decrypt_string`             | Return plain string from encrypted string    |
